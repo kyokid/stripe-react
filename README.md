@@ -1,6 +1,6 @@
 # Project 3 - *Stripe Central*
 
-**Streep** is an app using the [Stripe API](https://stripe.com/docs/api).
+**Streeple** is an app using the [Stripe API](https://stripe.com/docs/api).
 
 Time spent: **X** hours spent in total
 

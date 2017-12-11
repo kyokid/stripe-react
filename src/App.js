@@ -1,7 +1,22 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import {
+  Button,
+  Container,
+  Divider,
+  Grid,
+  Header,
+  Icon,
+  Image,
+  List,
+  Menu,
+  Segment,
+  Visibility,
+  Dimmer,
+  Loader,
+  Search,
+} from 'semantic-ui-react';
 class App extends Component {
   render() {
     return (
