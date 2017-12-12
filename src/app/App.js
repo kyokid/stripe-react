@@ -1,26 +1,14 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {
-  Button,
   Container,
-  Divider,
-  Grid,
-  Header,
-  Icon,
-  Image,
-  List,
   Menu,
-  Segment,
-  Visibility,
-  Dimmer,
-  Loader,
-  Search,
+  Header,
 } from 'semantic-ui-react';
 
-import key from './secret_key.json';
-import { TopMenu, TabMenu } from './menu/top-menu'
-import Checkout from './checkout/check-out'
+import key from '../secret_key.json';
+import { TopMenu, TabMenu } from '../menu/top-menu'
+import Checkout from '../checkout/check-out'
 
 
 const PUBLISH_KEY = key.publish_key
@@ -48,11 +36,12 @@ class App extends Component {
       loading: true,
       status: '',
       changeType: 'normal',
-      isOpenChargeModal: false
+      isOpenChargeModal: false,
+      cardId: ''
     }
   }
 
-  onSelectedCard() {
+  onSelectedCard = () => {
     this.setState({
       changeType: 'custom',
       isOpenChargeModal: true
@@ -63,21 +52,31 @@ class App extends Component {
     const url = `${BASE_URL}/customers/`
   }
 
+  onCharge = (cardId) => {
+    this.setState({
+      chargeType: 'normal',
+      isOpenChargeModal: true,
+      cardId
+    })
+  }
+
   render() {
     let content;
     content = (
       <TopMenu>
         <Menu default title="Checkout">
-          <Checkout cards={this.state.cards} onSelectedCard={this.onSelectedCard}/>
+          <Checkout 
+          cards={this.state.cards} 
+          onSelectedCard={this.onSelectedCard}
+          onCharge={this.onCharge}
+          />
         </Menu>
         <Menu title="Charges">
-
         </Menu>
-
       </TopMenu>
     )
     return (
-      <Container style={{ marginTop: '3em'}}>
+      <Container style={{ marginTop: '5em'}}>
       <Header as='h1'>Streeple</Header>
         {content}
       </Container>

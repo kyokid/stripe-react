@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Menu, Grid, Transition } from 'semantic-ui-react'
+import { Container, Menu, Grid, Transition } from 'semantic-ui-react';
 
 export class TopMenu extends Component {
     constructor(props) {
@@ -13,17 +13,13 @@ export class TopMenu extends Component {
         })
 
         this.state = {
-            currentTab: defaultTab,
-            visible: false
+            currentTab: defaultTab
         }
-
-        this.onItemPress = this.onItemPress.bind(this)
     }
 
     onItemPress = (event, { name }) => {
         this.setState({
-            currentTab: name,
-            visible: !this.state.visible
+            currentTab: name
         })
     }
 
@@ -48,12 +44,12 @@ export class TopMenu extends Component {
         return (
             <Container>
                 <Grid>
-                    <Grid.Column width={4}>
+                    <Grid.Column width={3}>
                         <Menu vertical>
                             {_Menu}
                         </Menu>
                     </Grid.Column>
-                    <Grid.Column stretched width={12}>
+                    <Grid.Column stretched width={13}>
                         <Transition animation='fade' duration={5000}>
                             {MenuContent}
                         </Transition>

@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { Header, Container, Card, Divider, Button } from 'semantic-ui-react'
+import CardList from './card-list'
 
 export default class Checkout extends Component {
     render() {
 
-        const { cards, onSelectedCard } = this.props
+        const { cards, onSelectedCard, onCharge } = this.props
         return (
             <Container>
                 <Header as='h1' className="stripe-header">Checkout</Header>
