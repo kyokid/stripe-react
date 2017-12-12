@@ -1,11 +1,18 @@
 import React, { Component } from 'react'
+import { Card, Image, Button } from 'semantic-ui-react'
 
 export default class CreditCard extends Component {
     render() {
+        const { card, onCharge } = this.props
+
         return (
-            <div>
+            <Card.Content>
+                <Card.Header>
+                    <Card.Meta>
                 
-            </div>
+                    </Card.Meta>
+                </Card.Header>
+            </Card.Content>
         )
     }
 }
