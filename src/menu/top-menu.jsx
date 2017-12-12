@@ -65,3 +65,27 @@ export class TabMenu extends Component {
         return this.props.children;
     }
 }
+
+export class TableMenu extends Component {
+    render() {
+        const {onRefund, charge} = this.props;
+        return (
+            <Menu vertical>
+                <Menu.Item>
+                    <Menu.Header>Actions</Menu.Header>
+                    <Menu.Menu>
+                        <Menu.Item name='refund' onClick={() => onRefund(charge)}/>
+                    </Menu.Menu>
+                </Menu.Item>
+                <Menu.Item>
+                    <Menu.Header>Connections</Menu.Header>
+                    <Menu.Menu>
+                        {/* <Menu.Item name='detail' onClick={() => onViewDetails(charge)}>
+                            Payment Details
+                        </Menu.Item> */}
+                    </Menu.Menu>
+                </Menu.Item>
+            </Menu>
+        )
+    }
+}

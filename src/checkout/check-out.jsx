@@ -12,7 +12,6 @@ export default class Checkout extends Component {
         return (
             
             <Container>
-                <Header as='h1' className="stripe-header">Checkout</Header>
                 <Card fluid>
                     <Card.Content>
                         <Card.Header>

@@ -9,7 +9,7 @@ import {
 import key from '../secret_key.json';
 import { TopMenu, TabMenu } from '../menu/top-menu'
 import Checkout from '../checkout/check-out'
-
+import Charges from '../charges/charges'
 
 
 const PUBLISH_KEY = key.publish_key
@@ -33,45 +33,55 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      cards: [],
       loading: true,
       status: '',
       changeType: 'normal',
       isOpenChargeModal: false,
-      cardId: ''
+      charges: [],
+      charge: {}
     }
   }
 
-  onSelectedCard = () => {
+  async fetchCharges() {
+    const url = `${BASE_URL}charges`
     this.setState({
-      changeType: 'custom',
-      isOpenChargeModal: true
+      loading: true
     })
+    await fetch(url, {
+      headers: {
+        'Authorization': `Bearer ${SECRET_KEY}`,
+      }
+    }).then(data => data.json())
+      .then(result => {
+        this.setState({
+          charges: result,
+          loading: false
+        })
+      })
   }
 
-  fetchCard() {
-    const url = `${BASE_URL}/customers/`
+  componentDidMount() {
+    this.fetchCharges()
   }
 
-  onCharge = (cardId) => {
+  onRefund = charge => {
     this.setState({
-      chargeType: 'normal',
-      isOpenChargeModal: true,
-      cardId
+      charge
     })
   }
 
   render() {
     let content;
-    
     content = (
       <TopMenu>
         <Menu default title="Checkout">
           <Checkout
             apiKey={PUBLISH_KEY}
+
           />
         </Menu>
         <Menu title="Charges">
+          <Charges data={this.state.charges.data} onRefund={this.onRefund}/>
         </Menu>
       </TopMenu>
     )
