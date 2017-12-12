@@ -11,6 +11,7 @@ import { TopMenu, TabMenu } from '../menu/top-menu'
 import Checkout from '../checkout/check-out'
 
 
+
 const PUBLISH_KEY = key.publish_key
 const SECRET_KEY = key.secret_key;
 const BASE_URL = 'https://api.stripe.com/v1/'
@@ -62,13 +63,12 @@ class App extends Component {
 
   render() {
     let content;
+    
     content = (
       <TopMenu>
         <Menu default title="Checkout">
-          <Checkout 
-          cards={this.state.cards} 
-          onSelectedCard={this.onSelectedCard}
-          onCharge={this.onCharge}
+          <Checkout
+            apiKey={PUBLISH_KEY}
           />
         </Menu>
         <Menu title="Charges">
@@ -76,8 +76,8 @@ class App extends Component {
       </TopMenu>
     )
     return (
-      <Container style={{ marginTop: '5em'}}>
-      <Header as='h1'>Streeple</Header>
+      <Container style={{ marginTop: '5em' }}>
+        <Header as='h1'>Streeple</Header>
         {content}
       </Container>
     );

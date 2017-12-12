@@ -7,7 +7,7 @@ export default class CardList extends Component {
         const { cards, onCharge } = this.props
         return (
             <Card.Group itemsPerRow={2}>
-                {cards.data.map(card => <CreditCard card={card} onCharge={onCharge}/>)}
+                {cards.data.map((card) => <CreditCard card={card} onCharge={onCharge}/>)}
             </Card.Group>
         )
     }

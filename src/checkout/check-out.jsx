@@ -1,22 +1,26 @@
 import React, { Component } from 'react'
 import { Header, Container, Card, Divider, Button } from 'semantic-ui-react'
 import CardList from './card-list'
+import { StripeProvider } from 'react-stripe-elements'
+import MyStoreCheckout from './my-store-checkout'
 
 export default class Checkout extends Component {
     render() {
 
-        const { cards, onSelectedCard, onCharge } = this.props
+        const { apiKey } = this.props
+        console.warn(apiKey)
         return (
+            
             <Container>
                 <Header as='h1' className="stripe-header">Checkout</Header>
                 <Card fluid>
                     <Card.Content>
                         <Card.Header>
-                            Choose your card
-                            <Button floated='right' basic color='green' onClick={onSelectedCard}>Custom Card</Button>
+                            <StripeProvider apiKey={apiKey} >
+                                <MyStoreCheckout />
+                            </StripeProvider>
                         </Card.Header>
-                        <Divider style={styles.divider}/>
-                        <CardList cards={cards} onCharge={onCharge}/>
+                        <Divider style={styles.divider} />
                     </Card.Content>
                 </Card>
             </Container>
